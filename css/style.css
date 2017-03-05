@@ -1,0 +1,40 @@
+
+
+body, div {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+
+
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+	
+	
+	
+.form-register ::-webkit-input-placeholder {
+    color:#797b7f;
+    font: 400 14px Arial, sans-serif;
+}
+.form-register ::-moz-placeholder {
+    color:#797b7f;
+    font: 400 14px Arial, sans-serif;
+}
+.form-register :-moz-placeholder {
+    color:#797b7f;
+    font: 400 14px Arial, sans-serif;
+}
+.form-register :-ms-input-placeholder {
+    color:#797b7f;
+    font: 400 14px Arial, sans-serif;
+}
+
+
+a {
+    transition: all .1s ease-in;
+}
+
