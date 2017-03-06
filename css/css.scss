@@ -6,47 +6,91 @@ $font-lato: Lato, Arial, sans-serif;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
+@mixin display-flex {
+  display: -webkit-flex;
+  display: flex;
+}
+@mixin flex-wrap {
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+@mixin justify-content-center {
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+@mixin justify-content-space-between {
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+@mixin flex-direction-column {
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+@mixin border-radius-50 {
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
 @import url('https://fonts.googleapis.com/css?family=Lato:100,400,400i|Raleway:700');
 
 body {
   color: #222;
   text-align: center;
-
 }
 li:before, li:after,
 .our-work__item--hover {
-
   transition: all .1s ease-in;
 }
-h1 {
+.header__title {
   font-family: $font-raleway;
   font-size: 48px;
   font-weight: 700;
   line-height: 60px;
   text-transform: uppercase;
+  margin-bottom: 36px;
+   &:after {
+     content: " ";
+     display: block;
+     width: 86px;
+     border-bottom: 2px solid #fff;
+     margin-top: 36px;
+     margin-right: auto;
+     margin-left: auto;
+   }
 }
-h2 {
+.our-services__title,
+.our-work__title,
+.footer__title {
   font-family: $font-raleway;
   font-size: 35px;
   font-weight: 700;
   line-height: 60px;
   text-transform: uppercase;
-}
-h4 {
-  font-family: $font-lato;
-  font-size: 24px;
-  text-transform: capitalize;
+  margin-top: 47px;
+  &:after {
+    content: " ";
+    display: block;
+    width: 86px;
+    border-bottom: 2px solid #222;
+    margin-top: 58px;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 .clear {
   clear: both;
 }
-
+.row {
+  width: 100%;
+  padding-left: 50px;
+  padding-right: 50px;
+  @include box-sizing;
+}
 .row-cont {
   max-width: 1170px;
   @include box-sizing;
   padding-top: 50px;
   margin: auto;
-
 }
 .teaser {
   background: #02496a url("../images/bg-teaser.jpg") 50% no-repeat;
@@ -56,28 +100,26 @@ h4 {
   h1 {
     margin-top: 240px;
   }
-
 }
-
 .logo {
   float: left;
+  text-align: left;
 }
 .teaser__menu {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  font-family: $font-lato;
+  font-size: 14px;
    li {
      display: inline-block;
      float: right;
      position: relative;
-     margin-right: 50px;
+     margin-right: 53px;
      cursor: pointer;
      text-transform: uppercase;
-
-
    }
 }
-
 .teaser__menu-list:before {
   content: "";
   display: block;
@@ -111,25 +153,50 @@ h4 {
   font-weight: 400;
   line-height: 30px;
   max-width: 630px;
-  margin: auto;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 257px;
 }
 .teaser__scroll {
-  margin-top: 220px;
-  margin-bottom: 40px;
+  width: 92px;
+  height: 92px;
+  margin-right: auto;
+  margin-left: auto;
+  path {
+    fill: #fff;
+    opacity: 0.5;
+  }
+  &:hover path {
+    opacity: 1;
+  }
 }
 .our-services__cont {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-bottom: 110px;
+  @include display-flex;
+  @include flex-wrap;
+  @include justify-content-space-between;
+  margin-bottom: 81px;
+  margin-top: 80px;
 }
 .our-services__item {
-  max-width: 32%;
+  width: 32%;
+  max-width: 380px;
+  min-width: 220px;
+  padding-left: 0.6%;
+  padding-right: 0.6%;
+  margin-bottom: 50px;
+}
+.our-services__item-title {
+  font-family: $font-lato;
+  font-size: 24px;
+  text-transform: capitalize;
 }
 .our-services__item-text {
   font-family: $font-lato;
   font-size: 16px;
   line-height: 30px;
+}
+.our-services__img-cont {
+  min-height: 155px;
 }
 .about-us {
   color: #fff;
@@ -141,6 +208,8 @@ h4 {
   font-size: 45px;
   margin-bottom: 5px;
   font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 .about-us__text {
   font-family: $font-lato;
@@ -153,14 +222,20 @@ h4 {
   display: block;
   color: inherit;
   font-size: 18px;
-
+  margin-top: 62px;
+  &:hover {
+    text-shadow: 1px 1px 2px #222, 0 0 1em #fff;
+  }
 }
 .about-us__dscr {
   max-width: 560px;
   text-align: left;
-  padding-top: 150px;
+  padding-top: 74px;
   padding-bottom: 110px;
   @include box-sizing
+}
+.our-work__wrapper {
+  font-size: 0;
 }
 .our-work__item {
   display: inline-block;
@@ -169,7 +244,8 @@ h4 {
   height: 420px;
   text-decoration: none;
   color: #fff;
-  margin: 0;
+  margin-top: 65px;
+  margin-right: 1.5%;
 }
 .our-work__img {
   position: absolute;
@@ -184,13 +260,12 @@ h4 {
   width: 100%;
   height: 100%;
   @include box-sizing;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  @include display-flex;
+  @include flex-direction-column;
+  @include justify-content-center;
   opacity: 0;
   &:hover {
     opacity: 1;
-
   }
 }
 .our-work__name {
@@ -202,6 +277,7 @@ h4 {
   display:block;
 }
 .our-work__btn {
+  color: #222;
   text-decoration: none;
   text-transform: uppercase;
   display: block;
@@ -210,7 +286,10 @@ h4 {
   border: 3px solid #222;
   text-align: center;
   line-height: 54px;
-  margin: 80px auto 80px auto;
+  margin: 80px auto 85px auto;
+  font-family: $font-lato;
+  font-size: 24px;
+  font-weight: 400;
   @include box-sizing;
   &:hover {
     -webkit-box-shadow: 7px 7px 5px 0 rgba(50, 50, 50, 0.75);
@@ -219,7 +298,7 @@ h4 {
   }
   &:active {
     margin-top: 83px;
-    margin-bottom: 77px;
+    margin-bottom: 82px;
     -webkit-box-shadow: 4px 4px 5px 0 rgba(50, 50, 50, 0.75);
     -moz-box-shadow:    4px 4px 5px 0 rgba(50, 50, 50, 0.75);
     box-shadow:         4px 4px 5px 0 rgba(50, 50, 50, 0.75);
@@ -230,8 +309,11 @@ h4 {
   background-size: cover;
   color: #fff;
 }
+.footer__title:after {
+  border-color: #fff;
+}
 .footer__social {
-  margin-top: 40px;
+  margin-top: 68px;
   margin-bottom: 40px;
    a {
      margin: 0 10px 0 10px;
@@ -244,43 +326,43 @@ h4 {
      @include box-sizing;
      &:hover {
        border: 2px solid #fff;
-       border-radius: 50%;
+       @include border-radius-50;
+
      }
    }
 }
 .footer__form {
   margin: auto;
-  max-width: 680px;
+  max-width: 669px;
   font-size: 0;
-   input, textarea {
-     line-height: 55px;
-     font-family: $font-lato;
-     font-size:18px;
-     font-weight: 400;
-     padding-left: 20px;
-     background: transparent;
-     border: none;
-     @include box-sizing
-   }
+  color: #afafaf;
+  input, textarea {
+    font-family: $font-lato;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 0 5px 0 20px;
+    background: transparent;
+    border-width: 0 0 2px 0;
+    border-color: #afafaf;
+    @include box-sizing;
+    &:focus {
+      outline: 2px solid #afafaf;
+    }
+}
   input {
-    max-width: 302px;
     height: 55px;
-    width: 49%;
+    width: 302px;
     margin-bottom: 10px;
-    border-bottom: 2px solid #afafaf;;
-
-
-
+    line-height: 55px;
   }
   textarea {
     width: 100%;
-    height: 100px;
-    border-bottom: 2px solid #afafaf;;
-
+    height: 127px;
+    resize: none;
   }
 }
 .footer__input-name {
-  margin-right: 2%;
+  margin-right: 65px;
 }
 .footer__button-submit {
   width: 177px;
@@ -292,8 +374,150 @@ h4 {
   font-family: $font-lato;
   font-size: 24px;
   font-weight: 400;
-  margin:  40px;
+  margin:  57px;
   background: transparent;
+  transition: all .1s ease-in;
   @include box-sizing;
+  &:hover {
+    color: #222;
+    background-color: #fff;
+  }
+  &:active {
+    outline: 3px solid #afafaf;
+  }
+  &:focus {
+    outline: 3px solid #afafaf;
+  }
 }
-
+input::-webkit-input-placeholder {
+  font-family: $font-lato;
+  color: #676767;
+  font-style: italic;
+  font-size: 18px;
+}
+input::-moz-placeholder {
+  font-family: $font-lato;
+  color: #676767;
+  font-style: italic;
+  font-size: 18px;
+}
+input:-moz-placeholder {
+  font-family: $font-lato;
+  color: #676767;
+  font-style: italic;
+  font-size: 18px;
+}
+input:-ms-input-placeholder {
+  font-family: $font-lato;
+  color: #676767;
+  font-style: italic;
+  font-size: 18px;
+}
+textarea::-webkit-input-placeholder {
+  padding-top: 88px;
+  transition: all .1s ease-in;
+  font-family: $font-lato;
+  color: #676767;
+  font-style: italic;
+  font-size: 18px;
+}
+textarea::-moz-placeholder {
+  padding-top: 88px;
+  transition: all .1s ease-in;
+  font-family: $font-lato;
+  color: #676767;
+  font-style: italic;
+  font-size: 18px;
+}
+textarea:-moz-placeholder {
+  padding-top: 88px;
+  transition: all .1s ease-in;
+  font-family: $font-lato;
+  color: #676767;
+  font-style: italic;
+  font-size: 18px;
+}
+textarea:-ms-input-placeholder {
+  padding-top: 88px;
+  transition: all .1s ease-in;
+  font-family: $font-lato;
+  color: #676767;
+  font-style: italic;
+  font-size: 18px;
+}
+textarea:focus::-webkit-input-placeholder {
+  padding-top: 0;
+  transition: all .1s ease-in;
+}
+textarea:focus::-moz-placeholder {
+  padding-top: 88px;
+}
+textarea:focus:-moz-placeholder {
+  padding-top: 88px;
+}
+textarea:focus:-ms-input-placeholder {
+  padding-top: 88px;
+}
+@media screen and (max-width: 850px) {
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .teaser__menu li {
+    margin-right: 20px;
+  }
+  .our-services__item {
+    width: 47%;
+  }
+}
+@media screen and (max-width: 720px) {
+  .footer__form input, textarea {
+    width: 100%;
+    margin-right: 0;
+  }
+  .logo {
+    float: none;
+    margin: 0 0 20px 0;
+  }
+}
+@media screen and (max-width: 500px) {
+  .teaser__menu li {
+    display: block;
+    float: none;
+    margin: 10px;
+  }
+  .teaser h1 {
+    margin-top: 20px;
+  }
+  .teaser__text {
+    margin-bottom: 30px;
+  }
+  .our-services__img-cont {
+    display: block;
+    margin: auto;
+  }
+  .our-services__item {
+    width: 100%;
+    margin: auto;
+  }
+}
+@media screen and (max-width: 370px) {
+  .our-work__item {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px;
+    .our-work__img {
+      width: 100%;
+      height: auto;
+    }
+    .our-work__item--hover {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .our-work__btn {
+    width: 300px;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+}
